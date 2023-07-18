@@ -2,9 +2,9 @@ package com.example.restapi.BookManagementNew.Controller;
 
 import com.example.restapi.BookManagementNew.Model.Book;
 import com.example.restapi.BookManagementNew.Service.BookService;
+import com.example.restapi.BookManagementNew.exception.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -22,7 +22,11 @@ private final BookService bookService;
     }
     @GetMapping("/{id}")
     public Book getBookById(@PathVariable Long id) {
-        return bookService.getBookById(id);
+        Book book = bookService.getBookById(id);
+        if (book == null) {
+            throw new BookNotFoundException("Book not found for ID: " + id);
+        }
+    return book;
     }
     @PostMapping
     public Book createBooks(@RequestBody Book book)
@@ -31,10 +35,17 @@ private final BookService bookService;
     }
     @PutMapping("/{id}")
     public Book updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
-        return bookService.updateBook(id, bookDetails);
+        Book updatedBook = bookService.updateBook(id, bookDetails);
+        if (updatedBook == null) {
+            throw new BookNotFoundException("Book not found for ID: " + id);
+        }
+        return updatedBook;
     }
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable Long id) {
-        bookService.deleteBook(id);
+        boolean deleted = bookService.deleteBook(id);
+        if (!deleted) {
+            throw new BookNotFoundException("Book not found for ID: " + id);
+        }
     }
-}
+    }
