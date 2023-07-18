@@ -38,8 +38,9 @@ public class BookService {
         return null;
     }
 
-    public void deleteBook(Long id) {
+    public boolean deleteBook(Long id) {
         bookRepository.deleteById(id);
+        return false;
     }
 }
 
