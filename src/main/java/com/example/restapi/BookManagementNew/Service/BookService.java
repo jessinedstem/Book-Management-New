@@ -3,9 +3,10 @@ package com.example.restapi.BookManagementNew.Service;
 import com.example.restapi.BookManagementNew.Model.Book;
 import com.example.restapi.BookManagementNew.Repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class BookService {
     private final BookRepository bookRepository;
     @Autowired

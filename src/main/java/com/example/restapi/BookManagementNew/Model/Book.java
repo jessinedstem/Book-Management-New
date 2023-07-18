@@ -1,25 +1,23 @@
 package com.example.restapi.BookManagementNew.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 @Entity
+@Table(name="Book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
     private String author;
-    private long isbn;
+    private String isbn;
     private LocalDate publicationDate;
     public Book()
     {
     }
 
-    public Book(long id, String title, String author, long isbn, LocalDate publicationDate) {
+    public Book(long id, String title, String author, String isbn, LocalDate publicationDate) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -51,11 +49,11 @@ public class Book {
         this.author = author;
     }
 
-    public long getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(long isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
