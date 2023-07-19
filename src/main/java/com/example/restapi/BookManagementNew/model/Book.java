@@ -1,4 +1,4 @@
-package com.example.restapi.BookManagementNew.Model;
+package com.example.restapi.BookManagementNew.model;
 
 import jakarta.persistence.*;
 
