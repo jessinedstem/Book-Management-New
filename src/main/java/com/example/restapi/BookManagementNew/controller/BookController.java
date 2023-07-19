@@ -1,8 +1,8 @@
-package com.example.restapi.BookManagementNew.Controller;
+package com.example.restapi.BookManagementNew.controller;
 
-import com.example.restapi.BookManagementNew.Model.Book;
-import com.example.restapi.BookManagementNew.Service.BookService;
 import com.example.restapi.BookManagementNew.exception.BookNotFoundException;
+import com.example.restapi.BookManagementNew.model.Book;
+import com.example.restapi.BookManagementNew.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

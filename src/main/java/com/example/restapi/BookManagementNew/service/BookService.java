@@ -1,7 +1,7 @@
-package com.example.restapi.BookManagementNew.Service;
+package com.example.restapi.BookManagementNew.service;
 
-import com.example.restapi.BookManagementNew.Model.Book;
-import com.example.restapi.BookManagementNew.Repository.BookRepository;
+import com.example.restapi.BookManagementNew.model.Book;
+import com.example.restapi.BookManagementNew.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
