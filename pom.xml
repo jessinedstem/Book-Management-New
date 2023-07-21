@@ -15,6 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
+		<spotless.version>2.38.0</spotless.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -32,6 +33,7 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+<<<<<<< Updated upstream
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
@@ -40,19 +42,95 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.3</version>
+=======
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>jakarta.persistence</groupId>-->
+<!--			<artifactId>jakarta.persistence-api</artifactId>-->
+<!--			<version>3.1.0</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.mapstruct</groupId>-->
+<!--			<artifactId>mapstruct</artifactId>-->
+<!--			<version>1.5.5.Final</version>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+		<groupId>org.modelmapper</groupId>
+		<artifactId>modelmapper</artifactId>
+		<version>2.4.4</version>
+>>>>>>> Stashed changes
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< Updated upstream
 			</dependencies>
 
+=======
+	</dependencies>
+>>>>>>> Stashed changes
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>${spotless.version}</version>
+				<configuration>
+					<formats>
+						<!-- you can define as many formats as you want, each is independent -->
+						<format>
+							<!-- define the files to apply to -->
+							<includes>
+								<include>*.md</include>
+								<include>.gitignore</include>
+							</includes>
+							<!-- define the steps to apply to those files -->
+							<trimTrailingWhitespace/>
+							<endWithNewline/>
+							<indent>
+								<tabs>true</tabs>
+								<spacesPerTab>4</spacesPerTab>
+							</indent>
+						</format>
+					</formats>
+					<!-- define a language-specific format -->
+					<java>
+						<googleJavaFormat>
+							<version>1.10.0</version>
+							<style>AOSP</style>
+							<reflowLongStrings>true</reflowLongStrings>
+						</googleJavaFormat>
+					</java>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
