@@ -1,14 +1,13 @@
-package com.example.restapi.BookManagementNew.service;
+package com.example.restapi.bookmanagementnew.service;
 
-import com.example.restapi.BookManagementNew.dto.BookDto;
-import com.example.restapi.BookManagementNew.model.Book;
-import com.example.restapi.BookManagementNew.repository.BookRepository;
+import com.example.restapi.bookmanagementnew.dto.BookDto;
+import com.example.restapi.bookmanagementnew.model.Book;
+import com.example.restapi.bookmanagementnew.repository.BookRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 @Service

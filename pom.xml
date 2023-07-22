@@ -8,10 +8,10 @@
 		<version>3.1.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.edstem.assignment</groupId>
-	<artifactId>Project-management</artifactId>
+	<groupId>com.example.restapi</groupId>
+	<artifactId>BookManagementNew</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Project-management</name>
+	<name>BookManagementNew</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<spotless.version>2.38.0</spotless.version>

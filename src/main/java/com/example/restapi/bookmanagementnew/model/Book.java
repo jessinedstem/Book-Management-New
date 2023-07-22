@@ -1,4 +1,4 @@
-package com.example.restapi.BookManagementNew.model;
+package com.example.restapi.bookmanagementnew.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
- package com.example.restapi.BookManagementNew.validation;
+ package com.example.restapi.bookmanagementnew.validation;
 
  import jakarta.validation.Constraint;
  import jakarta.validation.Payload;

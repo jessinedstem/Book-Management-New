@@ -1,4 +1,4 @@
-package com.example.restapi.BookManagementNew;
+package com.example.restapi.bookmanagementnew;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

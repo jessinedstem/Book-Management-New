@@ -1,6 +1,6 @@
-package com.example.restapi.BookManagementNew.repository;
+package com.example.restapi.bookmanagementnew.repository;
 
-import com.example.restapi.BookManagementNew.model.Book;
+import com.example.restapi.bookmanagementnew.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Long> {}
