@@ -1,4 +1,4 @@
-package com.example.restapi.BookManagementNew.exception;
+package com.example.restapi.bookmanagementnew.exception;
 
 public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException(String message) {

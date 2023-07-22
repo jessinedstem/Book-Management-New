@@ -1,6 +1,6 @@
-package com.example.restapi.BookManagementNew.dto;
+package com.example.restapi.bookmanagementnew.dto;
 
-import com.example.restapi.BookManagementNew.validation.ValidAuthor;
+import com.example.restapi.bookmanagementnew.validation.ValidAuthor;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

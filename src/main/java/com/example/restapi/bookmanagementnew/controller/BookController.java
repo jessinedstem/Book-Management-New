@@ -1,9 +1,7 @@
-package com.example.restapi.BookManagementNew.controller;
+package com.example.restapi.bookmanagementnew.controller;
 
-import com.example.restapi.BookManagementNew.dto.BookDto;
-import com.example.restapi.BookManagementNew.exception.BookNotFoundException;
-import com.example.restapi.BookManagementNew.model.Book;
-import com.example.restapi.BookManagementNew.service.BookService;
+import com.example.restapi.bookmanagementnew.dto.BookDto;
+import com.example.restapi.bookmanagementnew.service.BookService;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 @RestController
 @RequestMapping("/books")
 public class BookController {
