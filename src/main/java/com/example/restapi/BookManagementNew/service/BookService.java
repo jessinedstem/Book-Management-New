@@ -1,99 +1,58 @@
 package com.example.restapi.BookManagementNew.service;
 
+import com.example.restapi.BookManagementNew.dto.BookDto;
 import com.example.restapi.BookManagementNew.model.Book;
 import com.example.restapi.BookManagementNew.repository.BookRepository;
-<<<<<<< Updated upstream
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-=======
-import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
->>>>>>> Stashed changes
 @Service
 public class BookService {
     private final BookRepository bookRepository;
-    @Autowired
-    public BookService(BookRepository bookRepository) {
+    private final ModelMapper modelMapper;
+@Autowired
+    public BookService(BookRepository bookRepository, ModelMapper modelMapper) {
         this.bookRepository = bookRepository;
+        this.modelMapper = modelMapper;
     }
-    public List<Book> getAllBooks()
-    {
-        return bookRepository.findAll();
-    }
-
-    public Book getBookById(Long id) {
-        return bookRepository.findById(id).orElse(null);
-    }
-
-<<<<<<< Updated upstream
-    public Book createBooks(Book book) {
-        return bookRepository.save(book);
+    public List<BookDto> getAllBooks() {
+        List<Book> books = bookRepository.findAll();
+        return books.stream()
+                .map(book -> modelMapper.map(book,BookDto.class))
+                .collect(Collectors.toList());
     }
 
-    public Book updateBook(Long id, Book bookDetails) {
-        Book book=bookRepository.findById(id).orElse(null);
-        if(book!=null) {
-            book.setTitle(bookDetails.getTitle());
-            book.setAuthor(bookDetails.getAuthor());
-            book.setIsbn(bookDetails.getIsbn());
-            book.setPublicationDate(bookDetails.getPublicationDate());
-            return bookRepository.save(book);
-=======
     public BookDto getBookById(Long id) {
-        Book book =
-                bookRepository
-                        .findById(id)
-                        .orElseThrow(
-                                () ->
-                                        new IllegalArgumentException(
-                                                "Book not found with ID: " + id));
+        Book getBook = bookRepository.findById(id).orElseThrow(()->{
+           return new IllegalArgumentException("Book not found with ID: " + id);
+        });
+        return modelMapper.map(getBook, BookDto.class);
+    }
+
+    public BookDto addBook(@Valid BookDto bookDto) {
+        Book book = bookRepository.save(modelMapper.map(bookDto, Book.class));
         return modelMapper.map(book, BookDto.class);
     }
 
-    public BookDto addBook(BookDto bookDto) {
-        Book book = modelMapper.map(bookDto, Book.class);
-        Book savedBook = bookRepository.save(book);
-        return modelMapper.map(savedBook, BookDto.class);
+    public BookDto updateBookById(Long id, @Valid BookDto bookDto) {
+        Book bookToUpdate = bookRepository.findById(id).orElseThrow(() ->{
+            return new IllegalArgumentException("Book not found with ID: " + id);
+        });
+        modelMapper.map(bookDto,bookToUpdate);
+        Book updatedBook = bookRepository.save(bookToUpdate);
+        return modelMapper.map(updatedBook, BookDto.class);
     }
-
-    //    public BookDto updateBook(Long id, BookDto bookDto) {
-    //        Book existingBook = bookRepository.findById(id)
-    //                .orElseThrow(() -> new IllegalArgumentException("Book not found with ID: " +
-    // id));
-    //        existingBook.setTitle(bookDto.getTitle());
-    //        existingBook.setAuthor(bookDto.getAuthor());
-    //        existingBook.setIsbn(bookDto.getIsbn());
-    //        existingBook.setPublicationDate(bookDto.getPublicationDate());
-    //
-    //        Book updatedBook = bookRepository.save(existingBook);
-    //        return modelMapper.map(updatedBook, BookDto.class);
-    //    }
-
-    public void deleteBook(Long id) {}
-
-    public void deleteBook(long id) {
+    public void deleteBook(Long id) {
         if (bookRepository.existsById(id)) {
             bookRepository.deleteById(id);
-        } else {
-            throw new IllegalArgumentException("Book not found with ID: " + id);
->>>>>>> Stashed changes
         }
-        return null;
-    }
-
-    public boolean deleteBook(Long id) {
-        bookRepository.deleteById(id);
-        return false;
+        else {
+            throw new IllegalArgumentException("Book not found with ID: " + id);
+        }
     }
 }
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
