@@ -1,12 +1,12 @@
 package com.example.restapi.bookmanagementnew.service;
 
 import com.example.restapi.bookmanagementnew.dto.BookDto;
+import com.example.restapi.bookmanagementnew.exception.BookNotFoundException;
 import com.example.restapi.bookmanagementnew.model.Book;
 import com.example.restapi.bookmanagementnew.repository.BookRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
@@ -27,12 +27,9 @@ public class BookService {
     }
 
     public BookDto getBookById(Long id) {
-        Book getBook = bookRepository.findById(id).orElseThrow(()->{
-           return new IllegalArgumentException("Book not found with ID: " + id);
-        });
+        Book getBook = bookRepository.findById(id).orElseThrow(()->new BookNotFoundException(id));
         return modelMapper.map(getBook, BookDto.class);
     }
-
     public BookDto addBook(@Valid BookDto bookDto) {
         Book book = bookRepository.save(modelMapper.map(bookDto, Book.class));
         return modelMapper.map(book, BookDto.class);
