@@ -1,10 +1,10 @@
 package com.example.restapi.bookmanagementnew.dto;
 
 import com.example.restapi.bookmanagementnew.validation.ValidAuthor;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import com.example.restapi.bookmanagementnew.validation.ValidIsbn;
+import com.example.restapi.bookmanagementnew.validation.ValidTitle;
 import java.time.LocalDate;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 @Getter
@@ -14,18 +14,9 @@ import lombok.*;
 @NoArgsConstructor
 public class BookDto {
     private long id;
-
-    @NotBlank(message = "title required")
-    @Size(min = 3, message = "Must be minimum 3 characters")
-    private String title;
-
-    @NotBlank(message = "Author is mandatory")
-        @ValidAuthor
-    @Size(min = 3, message = "Must be minimum 3 characters")
-    private String author;
-
-    @Min(value = 1, message = "the value should be positive")
-    private String isbn;
-
+    @ValidTitle private String title;
+    @ValidAuthor private String author;
+    @Positive
+    @ValidIsbn private String isbn;
     private LocalDate publicationDate;
 }

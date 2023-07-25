@@ -1,7 +1,7 @@
 package com.example.restapi.bookmanagementnew.exception;
 
 public class BookNotFoundException extends RuntimeException {
-    public BookNotFoundException(String message) {
-        super(message);
+    public BookNotFoundException(Long id) {
+        super("Book not exist:"+id);
     }
 }

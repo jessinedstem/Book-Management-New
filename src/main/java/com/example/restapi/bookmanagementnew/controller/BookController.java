@@ -30,6 +30,7 @@ private final BookService bookService;
         return ResponseEntity.ok(book);
     }
 
+
     @PostMapping
     public ResponseEntity<BookDto> addBook(@Valid @RequestBody BookDto bookDto) {
         BookDto savedBook = bookService.addBook(bookDto);
